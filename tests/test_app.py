@@ -23,12 +23,20 @@ class TestMoviesService:
     def movies_service(self, mock_ghibli_api):
         return MoviesService(ghibli_api=mock_ghibli_api)
 
-    def test_get_ghibli_movies_no_movies_returns_empty_list(self, mock_ghibli_api, movies_service):
+    def test_get_ghibli_movies_no_movies_returns_empty_list(
+        self,
+        mock_ghibli_api,
+        movies_service
+    ):
         mock_ghibli_api.get_films.return_value = []
 
         assert movies_service.get_ghibli_movies() == []
 
-    def test_get_ghibli_movies_no_people_returns_no_people(self, mock_ghibli_api, movies_service):
+    def test_get_ghibli_movies_no_people_returns_no_people(
+        self,
+        mock_ghibli_api,
+        movies_service
+    ):
         mock_ghibli_api.get_films.return_value = [
             {'id': '1', 'title': 'AAA'},
             {'id': '2', 'title': 'BBB'},
@@ -40,7 +48,11 @@ class TestMoviesService:
             {'id': '2', 'title': 'BBB', 'people': []},
         ]
 
-    def test_get_ghibli_movies_with_people_returns_expected(self, mock_ghibli_api, movies_service):
+    def test_get_ghibli_movies_with_people_returns_expected(
+        self,
+        mock_ghibli_api,
+        movies_service
+    ):
         mock_ghibli_api.get_films.return_value = [
             {'id': '1', 'title': 'AAA'},
             {'id': '2', 'title': 'BBB'},
@@ -55,12 +67,28 @@ class TestMoviesService:
         ]
 
         assert movies_service.get_ghibli_movies() == [
-            {'id': '1', 'title': 'AAA', 'people': ['Person 1', 'Person 3']},
-            {'id': '2', 'title': 'BBB', 'people': ['Person 2', 'Person 3', 'Person 4']},
-            {'id': '3', 'title': 'CCC', 'people': []},
+            {
+                'id': '1',
+                'title': 'AAA',
+                'people': ['Person 1', 'Person 3']
+            },
+            {
+                'id': '2',
+                'title': 'BBB',
+                'people': ['Person 2', 'Person 3', 'Person 4']
+            },
+            {
+                'id': '3',
+                'title': 'CCC',
+                'people': []
+            },
         ]
 
-    def test_get_ghibli_movie_caches_result(self, mock_ghibli_api, movies_service):
+    def test_get_ghibli_movie_caches_result(
+        self,
+        mock_ghibli_api,
+        movies_service
+    ):
         mock_ghibli_api.get_films.return_value = []
         mock_ghibli_api.side_effect = time.sleep(0.2)
 

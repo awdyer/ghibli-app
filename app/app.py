@@ -34,7 +34,8 @@ class GhibliApi:
             r.raise_for_status()
             return r.json()
         except (requests.exceptions.RequestException, ValueError) as e:
-            raise GhibliApiError('An error occurred querying the Ghibli API') from e
+            msg = 'An error occurred querying the Ghibli API'
+            raise GhibliApiError(msg) from e
 
 
 class MoviesService:
