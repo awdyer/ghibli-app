@@ -74,7 +74,10 @@ class MoviesResource:
 
 def create_app(movies_service):
     app = falcon.API()
+    app.req_options.strip_url_path_trailing_slash = True
+
     app.add_route('/movies', MoviesResource(movies_service=movies_service))
+
     return app
 
 

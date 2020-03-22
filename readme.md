@@ -9,7 +9,7 @@ pip install -r requirements.txt
 
 ## Run the app
 ```bash
-python -m waitress --call "app.app:get_app"
+python -m waitress --port 8000 --call "app.app:get_app"
 ```
 
 ## Run tests
