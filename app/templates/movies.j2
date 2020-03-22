@@ -1,0 +1,19 @@
+<html>
+<body>
+{% for movie in movies %}
+    <h2>{{ movie.title }}</h2>
+    {% if movie['people'] %}
+        <p>People:
+        <ul>
+        {% for person in movie['people'] %}
+            <li>{{ person }}</li>
+        {% endfor %}
+        </ul>
+        </p>
+    {% else %}
+        <p>No people found.</p>
+    {% endif %}
+    <br>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,6 @@
+cachetools==4.0.0
+falcon==2.0.0
+Jinja2==2.11.1
+pytest==5.4.1
+requests==2.23.0
+waitress==1.4.3
